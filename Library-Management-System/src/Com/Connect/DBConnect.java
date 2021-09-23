@@ -3,7 +3,7 @@ package Com.Connect;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class CP {
+public class DBConnect {
 
 	static Connection con;
 	
@@ -12,11 +12,12 @@ public class CP {
 			//load the Driver
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			//Create the connection....
-			String url = "jdbc:mysql://Local host:3306/Library";
+			String url = "jdbc:mysql://localhost:3306/librarymanagementsystem";
 			String user = "root";
 			String password = "root";
 			
 			con = DriverManager.getConnection(url, user, password);
+			System.out.println("hi");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -25,8 +26,12 @@ public class CP {
 		
 		
 		
+		
+		
 	}
-
+public static void main(String[] args) {
+Create();
+}
 
 	}
 

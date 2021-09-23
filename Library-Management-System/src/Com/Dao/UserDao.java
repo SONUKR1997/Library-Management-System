@@ -1,4 +1,5 @@
 package Com.Dao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,24 +12,18 @@ import com.model.User;
 
 public class UserDao {
 
-	private static final String CP = null;
-
-	public UserDao(String name, String phone, String city) {
-		// TODO Auto-generated constructor stub
-	}
-
-	public static boolean insertStudentToDB(UserDao st) {
+	public static boolean insertStudentToDB(User st) {
 		// TODO Auto-generated method stub
 		boolean f= false;
 		try {
 			//jdbc code....
-			Connection con=CP.create();
+			Connection con=CP.createC();
 			String q="insert into user(uname,uphone,ucity) values(?,?,?)";
 			//preparedStatement
 			PreparedStatement pstmt=con.prepareStatement(q);
 			//set the values parameters
 			pstmt.setString(1, st.getUserName());
-			pstmt.setString(2, st.getUserName());
+			pstmt.setString(2, st.getUserPhone());
 			pstmt.setNString(3, st.getUserCity());
 			
 			//execute
@@ -41,22 +36,12 @@ public class UserDao {
 		return f;
 	}
 
-	private String getUserCity() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private String getUserName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public static boolean deleteUser(int userId) {
 		// TODO Auto-generated method stub
 		boolean f= false;
 		try {
 			//jdbc code....
-			Connection con=CP.create();
+			Connection con=CP.createC();
 			String q="delete from user where sid=?";
 			//preparedStatement
 			PreparedStatement pstmt=con.prepareStatement(q);
@@ -90,10 +75,10 @@ public class UserDao {
 				String phone=set.getNString(3);
 				String city=set.getNString("ucity");
 								
-				System.out.println("ID : "+id);
-				System.out.println("Name : "+name);
-				System.out.println("Phone : "+phone);
-				System.out.println("City : "+city);
+				System.out.println("User ID : "+id);
+				System.out.println("User Name : "+name);
+				System.out.println("User Phone : "+phone);
+				System.out.println("USer City : "+city);
 				System.out.println("++++++++++++++++++++++++++++++++");
 				
 			}
@@ -129,6 +114,7 @@ public class UserDao {
 		return t;
 	}
 
-	}
+	
+	
 
-
+}

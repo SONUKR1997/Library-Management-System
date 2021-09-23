@@ -128,7 +128,7 @@ public class Main {
 				//Delete student
 				System.out.println("Enter the user Id to delete :");
 				int userId=Integer.parseInt(br.readLine());
-				boolean f=UserDao.deleteUser(userId);
+				boolean f=((Com.Dao.UserDao) UserDao).deleteUser(userId);
 				if(f) {
 					System.out.println("Delete......");
 				}else {
@@ -138,7 +138,7 @@ public class Main {
 			}
 			else if(c==7) {
 				//Display student
-				UserDao.showAllUser();
+				((Com.Dao.UserDao) UserDao).showAllUser();
 				
 			}
 			else if(c==8){
@@ -159,8 +159,8 @@ public class Main {
 				
 				
 				
-				User v=new User( userId,name, phone, city);
-				boolean t=UserDao.updateUser(v);
+				Com.Model.User v=new Com.Model.User( userId,name, phone, city);
+				boolean t=((Com.Dao.UserDao) UserDao).updateUser(v);
 				
 				if(t) {
 					System.out.println("up......");
@@ -179,11 +179,3 @@ public class Main {
 			}
 		}
 		
-			
-		}
-		
-
-
-	}
-
-}
