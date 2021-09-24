@@ -69,8 +69,8 @@ public class BookDao {
 			while (set.next()) {
 				int id = set.getInt(1);
 				String name = set.getString(2);
-				String code = set.getNString(3);
-				String price = set.getNString(4);
+				String code = set.getString(3);
+				String price = set.getString(4);
 
 				System.out.println("Book ID : " + id);
 				System.out.println("Book Name : " + name);
@@ -122,8 +122,8 @@ public class BookDao {
 			Connection con = DBConnect.Create();
 			String q = "insert into issuebook (userid,bookid,issuedate,returndate) values(?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(q);
-			pstmt.setInt(1, ib.getUserid());
-			pstmt.setInt(2, ib.getBookid());
+			pstmt.setInt(1, ib.getUserId());
+			pstmt.setInt(2, ib.getBookId());
 			pstmt.setString(3, ib.getIssuedate());
 			pstmt.setString(4, ib.getReturndate());
 

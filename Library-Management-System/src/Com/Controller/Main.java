@@ -1,23 +1,20 @@
 package Com.Controller;
-
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+ import java.io.IOException;
+ import java.io.InputStreamReader;
 
-
-import com.dao.BookDao;
-import com.dao.UserDao;
-import com.model.Book;
-import com.model.User;
-
+ 
+ import Com.Dao.BookDao;
+ import Com.Dao.UserDao;
+ import Com.Model.Book;
+ import Com.Model.IssueBook;
+ import Com.Model.User;
 
 public class Main {
 
 	private static final Main bk=null;
-	private static final Com.Dao.BookDao BookDao = null;
-	public Main(String name, String code, String price) {
-		
-	}
+	private static final BookDao BookDao = null;
+	
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -47,8 +44,8 @@ public class Main {
 				System.out.println("Enter book price:");
 				String price=br.readLine();
 				
-				Com.Dao.BookDao bk=new Com.Dao.BookDao();
-				boolean answer =Com.Dao.BookDao.insertBookToDB(bk);
+				Book bk=new Book(name,code,price);
+				boolean answer =BookDao.insertBookToDB(bk);
 				if(answer) {
 					System.out.println("Success add book");
 				}else {
@@ -101,7 +98,7 @@ public class Main {
 				System.out.println(v);
 				
 			}
-			Object UserDao;
+			
 			if(c==5) {
 				//Add student.....
 				System.out.println("Enter user name :");
@@ -114,7 +111,7 @@ public class Main {
 				String city=br.readLine();
 				
 				//create student object to store student
-				User st=new Com.Dao.UserDao(name, phone, city);
+				User st=new User(name, phone, city);
 				boolean answer=UserDao.insertStudentToDB(st);
 				if(answer) {
 					System.out.println("student is added successfully.....");
@@ -128,7 +125,7 @@ public class Main {
 				//Delete student
 				System.out.println("Enter the user Id to delete :");
 				int userId=Integer.parseInt(br.readLine());
-				boolean f=((Com.Dao.UserDao) UserDao).deleteUser(userId);
+				boolean f=UserDao.deleteUser(userId);
 				if(f) {
 					System.out.println("Delete......");
 				}else {
@@ -138,7 +135,7 @@ public class Main {
 			}
 			else if(c==7) {
 				//Display student
-				((Com.Dao.UserDao) UserDao).showAllUser();
+				UserDao.showAllUser();
 				
 			}
 			else if(c==8){
@@ -159,8 +156,8 @@ public class Main {
 				
 				
 				
-				Com.Model.User v=new Com.Model.User( userId,name, phone, city);
-				boolean t=((Com.Dao.UserDao) UserDao).updateUser(v);
+			User v=new User( userId,name, phone, city);
+				boolean t= UserDao.updateUser(v);
 				
 				if(t) {
 					System.out.println("up......");
@@ -177,5 +174,5 @@ public class Main {
 			}else {
 				
 			}
-		}
-		
+		}}
+}

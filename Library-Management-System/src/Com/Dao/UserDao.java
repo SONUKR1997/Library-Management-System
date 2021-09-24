@@ -5,10 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-
-import com.model.CP;
-import com.model.User;
-
+import Com.Connect.DBConnect;
+import Com.Model.User;
 
 public class UserDao {
 
@@ -17,7 +15,7 @@ public class UserDao {
 		boolean f= false;
 		try {
 			//jdbc code....
-			Connection con=CP.createC();
+			Connection con=DBConnect.Create();
 			String q="insert into user(uname,uphone,ucity) values(?,?,?)";
 			//preparedStatement
 			PreparedStatement pstmt=con.prepareStatement(q);
@@ -41,7 +39,7 @@ public class UserDao {
 		boolean f= false;
 		try {
 			//jdbc code....
-			Connection con=CP.createC();
+			Connection con=DBConnect.Create();
 			String q="delete from user where sid=?";
 			//preparedStatement
 			PreparedStatement pstmt=con.prepareStatement(q);
@@ -64,7 +62,7 @@ public class UserDao {
 		boolean f=false;
 		try {
 			//jdbc code....
-			Connection con=CP.createC();
+			Connection con=DBConnect.Create();
 			String q="select * from user ";
 			Statement stmt=con.createStatement();
 			
@@ -94,7 +92,7 @@ public class UserDao {
 		boolean t= false;
 		try {
 			//jdbc code....
-			Connection con=CP.createC();
+			Connection con=DBConnect.Create();
 			String q="update user set uname=? , uphone=? , ucity=?  where uid=?";
 			//preparedStatement
 			PreparedStatement pstmt=con.prepareStatement(q);
@@ -113,8 +111,5 @@ public class UserDao {
 		}
 		return t;
 	}
-
-	
-	
 
 }
